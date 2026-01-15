@@ -17,12 +17,11 @@ export default function Navbar() {
   const [newName, setNewName] = useState("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [savingToDb, setSavingToDb] = useState(false);
-  
+   
   const { address, isConnected } = useAccount();
   const { disconnect } = useDisconnect();
   const { open } = useWeb3Modal();
 
-  // ... (Keep existing hooks and logic exactly as they were)
   const { data: pointsData, refetch: refetchPoints } = useReadContract({
     abi: CONTRACT_ABI,
     address: CONTRACT_ADDRESS,
@@ -201,7 +200,7 @@ export default function Navbar() {
   };
 
   const isClaimButtonDisabled = isClaiming || isConfirmingClaim || hasClaimed || !userPoints || userPoints === 0;
-  
+   
   const claimButtonText = () => {
     if (isClaiming) return 'Check Wallet...';
     if (isConfirmingClaim) return 'Confirming...';
@@ -223,7 +222,7 @@ export default function Navbar() {
               Wrap-Up
             </span>
           </Link>
-          
+           
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -234,9 +233,10 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-4">
+            {/* UPDATED: Curated Articles Button (Desktop) */}
             <Link 
               to="/curated" 
-              className="text-zinc-400 hover:text-white transition-colors text-sm font-medium px-4 py-2 hover:bg-[#18181b] rounded-md"
+              className="text-zinc-400 border border-[#27272a] hover:bg-[#10b981] hover:text-black hover:border-[#10b981] transition-all text-sm font-medium px-4 py-2 rounded-md"
             >
               Curated Articles
             </Link>
@@ -317,10 +317,11 @@ export default function Navbar() {
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
           <div className="lg:hidden pb-6 pt-2 space-y-4 border-t border-[#27272a]">
+            {/* UPDATED: Curated Articles Button (Mobile) */}
             <Link 
               to="/curated" 
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block text-zinc-400 hover:text-white px-3 py-3 rounded-lg hover:bg-[#18181b] text-base font-medium"
+              className="block text-zinc-400 border border-[#27272a] hover:bg-[#10b981] hover:text-black hover:border-[#10b981] px-3 py-3 mx-3 rounded-lg text-base font-medium transition-all"
             >
               Curated Articles
             </Link>
