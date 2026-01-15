@@ -99,7 +99,7 @@ export default function ArticleDetailPage() {
 
   const callContract = (writeFn, config, toastId) => {
     if (chainId !== mantleSepolia.id) {
-      toast.loading("Switching to Monad Testnet...", { id: toastId });
+      toast.loading("Switching to Mantle Testnet...", { id: toastId });
       switchChain({ chainId: mantleSepolia.id }, {
         onSuccess: () => {
           toast.loading('Please confirm in wallet...', { id: toastId });
